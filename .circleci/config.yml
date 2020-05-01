@@ -9,7 +9,7 @@ commands:
   install-ansible:
     steps:
       - run: apt-get update
-      - run: apt-get -y install ansible
+      - run: apt-get -y install ansible git
       - run: ansible --version
   
   run-ansible:
@@ -19,7 +19,7 @@ commands:
             - "6f:c7:bf:67:64:7b:5c:e3:4c:4f:b2:0f:5d:dd:a7:09"
       - checkout  
       - run: cd ./ansible_config && \
-             ansible-playbook basic-provision.yml --limit 165.227.125.212
+             ansible-playbook basic-provision.yml -e working_host=165.227.125.212
 
 jobs:
   deployment-job:

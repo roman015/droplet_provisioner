@@ -1,8 +1,23 @@
 ---
-- hosts: all
-  remote_user: root
+- hosts: localhost
+  connection: local
+  tasks:
+  - add_host:
+      name: "{{ working_host }}"
+      groups: working_group
+    changed_when: false
 
-    tasks:
-    - name: ping the remote server
-      ping:
+- hosts: working_group
+  gather_facts: false
+  tasks:
+  - debug:
+    msg: "I'm on {{ ansible_host }}"
+
+
+# - hosts: all
+#   remote_user: root
+
+#   tasks:
+#   - name: ping the remote server
+#     ping:
 
