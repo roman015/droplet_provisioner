@@ -25,3 +25,10 @@ of the droplet will be.
 
 DROPLET_IP = 165.227.125.212
 
+# Manual connection
+
+To connect to the remote host manually you can run,
+
+```
+$ ssh -i id_rsa root@165.227.125.212
+```
