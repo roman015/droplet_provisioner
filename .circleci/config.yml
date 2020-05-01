@@ -6,18 +6,26 @@ executors:
       - image: ubuntu:bionic-20200403
 
 commands:
-  build:
+  install-ansible:
     steps:
-      - run: echo 'Hello World'
       - run: apt-get update
       - run: apt-get -y install ansible
       - run: ansible --version
+  
+  run-ansible:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "6f:c7:bf:67:64:7b:5c:e3:4c:4f:b2:0f:5d:dd:a7:09"
+      - run: cd ansible_config && \
+             ansible-playbook basic-provision.yml --limit 165.227.125.212
 
 jobs:
   deployment-job:
     executor: ubuntu-docker
     steps:
-      - build
+      - install-ansible
+      - run-ansible
 
 
 workflows:
