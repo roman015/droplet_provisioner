@@ -3,21 +3,24 @@ version: 2.1
 executors:
   ubuntu-docker:
     docker:
-      - image: circleci/python:3.8.1
+      - image: ubuntu:bionic-20200403
 
 commands:
   build:
     steps:
       - run: echo 'Hello World'
+      - run: apt-get update
+      - run: apt-get install ansible
+      - run: ansible --version
 
 jobs:
-  first-job:
+  deployment-job:
     executor: ubuntu-docker
     steps:
       - build
 
 
 workflows:
-  deploy-to-digital-ocean:
+  deployment-workflow:
     jobs:
       - first-job
