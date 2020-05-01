@@ -23,4 +23,4 @@ jobs:
 workflows:
   deployment-workflow:
     jobs:
-      - first-job
+      - deployment-job
