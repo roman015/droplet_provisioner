@@ -10,7 +10,7 @@ commands:
     steps:
       - run: echo 'Hello World'
       - run: apt-get update
-      - run: apt-get install ansible
+      - run: apt-get -y install ansible
       - run: ansible --version
 
 jobs:
