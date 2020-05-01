@@ -18,7 +18,7 @@ commands:
           fingerprints:
             - "6f:c7:bf:67:64:7b:5c:e3:4c:4f:b2:0f:5d:dd:a7:09"
       - checkout  
-      - run: cd ./ansible_config && \
+      - run: cd ./ansible_config &&
              ansible-playbook basic-provision.yml -e working_host=165.227.125.212
 
 jobs:
