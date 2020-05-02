@@ -24,7 +24,7 @@ jobs:
   deployment-job:
     executor: ubuntu-docker
     steps:
-      - install-ansible
+      # - install-ansible
       - run-ansible
 
 
