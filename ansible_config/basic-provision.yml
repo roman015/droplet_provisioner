@@ -30,4 +30,5 @@
       - install-dotnet-core
       - create-mysql-user-and-db
       - create-webapp-user
-      - setting-up-webapp-and-db
+      - install-nginx
+      # - setting-up-webapp-and-db
