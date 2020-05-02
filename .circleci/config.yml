@@ -6,11 +6,6 @@ executors:
       - image: abrahamvarricatt/ubuntu-ansible-toolbox:latest
 
 commands:
-  # install-ansible:
-  #   steps:
-  #     - run: apt-get update
-  #     - run: apt-get -y install ansible git python3
-  #     - run: ansible --version
   
   run-ansible:
     steps:
@@ -24,7 +19,6 @@ jobs:
   deployment-job:
     executor: ubuntu-docker
     steps:
-      # - install-ansible
       - run-ansible
 
 
