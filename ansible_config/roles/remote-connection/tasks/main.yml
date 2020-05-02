@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+  - add_host:
+      name: "{{ working_host }}"
+      groups: remote_droplet
+  changed_when: false
+
+- hosts: remote_droplet
+  gather_facts: false
+    
+  tasks:
+  - debug:
+      msg: "I'm on {{ ansible_host }}"
+  - ping:
