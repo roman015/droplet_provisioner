@@ -6,7 +6,7 @@
       state: directory
       owner: "{{ webapp_user }}"
       group: "{{ webapp_user }}"
-      mode: u=rw,g=rw,o=r
+      mode: u=rwx,g=rwx,o=rx
 
   - name: Create symlink to webapp source folder
     become: yes
