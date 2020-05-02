@@ -9,7 +9,7 @@ commands:
   install-ansible:
     steps:
       - run: apt-get update
-      - run: apt-get -y install ansible git
+      - run: apt-get -y install ansible git python3
       - run: ansible --version
   
   run-ansible:
