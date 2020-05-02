@@ -1,0 +1,47 @@
+---
+
+  - name: Create /var/www directory
+    file:
+      path: /var/www
+      state: directory
+      owner: "{{ webapp_user }}"
+      group: "{{ webapp_user }}"
+      mode: u=rw,g=rw,o=r
+
+  - name: Create symlink to webapp source folder
+    become: yes
+    become_user: "{{ webapp_user }}"
+    file:
+      state: link
+      src: /home/{{ webapp_user }}/droplet_provisioner/dotNetWebApp
+      dest: /var/www/movie-app
+
+  - name: Updating appsettings.json from template
+    template:
+      src: appsettings.json.j2
+      dest: /var/www/movie-app/appsettings.json
+      owner: "{{ webapp_user }}"
+      group: "{{ webapp_user }}"
+      mode: u=rw,g=rw,o=r
+
+  - name: Update database with tables
+    become: yes
+    become_user: "{{ webapp_user }}"
+    shell: dotnet ef database update
+    args:
+      chdir: /var/www/movie-app
+
+  - name: Build project
+    become: yes
+    become_user: "{{ webapp_user }}"
+    shell: dotnet build
+    args:
+      chdir: /var/www/movie-app
+
+  - name: Publish dotNet project
+    become: yes
+    become_user: "{{ webapp_user }}"
+    shell: dotnet publish
+    args:
+      chdir: /var/www/movie-app
+
