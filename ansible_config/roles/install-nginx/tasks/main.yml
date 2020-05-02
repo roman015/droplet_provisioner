@@ -12,6 +12,6 @@
       rule: allow
       name: "Nginx HTTP"
 
-  - name: Activate firewall
-    ufw:
-      state: enabled
+#   - name: Activate firewall
+#     ufw:
+#       state: enabled

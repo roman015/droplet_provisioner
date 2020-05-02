@@ -5,7 +5,7 @@ cd ./ansible_config
 
 echo 'run playbook'
 ansible-playbook basic-provision.yml \
-                 -e working_host=165.227.125.212 \
+                 -e working_host=167.99.127.218 \
                  -e 'ansible_python_interpreter=/usr/bin/python3'
 
                 #  --key-file ../id_rsa \
