@@ -31,4 +31,4 @@
       - create-mysql-user-and-db
       - create-webapp-user
       - install-nginx
-      # - setting-up-webapp-and-db
+      - setting-up-webapp-and-db

@@ -12,6 +12,11 @@
       rule: allow
       name: "Nginx HTTP"
 
-#   - name: Activate firewall
-#     ufw:
-#       state: enabled
+  - name: Allow SSH in firewall
+    ufw:
+      rule: allow
+      name: "OpenSSH"
+
+  - name: Activate firewall
+    ufw:
+      state: enabled
