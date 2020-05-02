@@ -37,6 +37,8 @@
   - name: Delete old DB instances
     mysql_db:
       name: "{{ mysql_db_name }}" 
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
       state: absent
     notify:
      - Restart MySQL
@@ -44,6 +46,8 @@
   - name: Create new DB instance
     mysql_db:
       name: "{{ mysql_db_name }}" 
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
       state: present
     notify:
      - Restart MySQL
@@ -53,4 +57,6 @@
       name: "{{ mysql_user }}"
       password: "{{ mysql_user_password }}"
       priv: '*.*:ALL'
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
       state: present
