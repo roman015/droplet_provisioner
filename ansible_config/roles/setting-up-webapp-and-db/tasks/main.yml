@@ -53,16 +53,24 @@
     notify:
       - Restart dotNetWebApp
 
-  - name: install nginx configuration file
+  - name: install nginx configuration file for dotnet_webapp
     template: 
       src: dotnet_webapp.j2 
       dest: /etc/nginx/sites-available/dotnet_webapp
     notify:
       - Restart nginx
 
+  - name: Activate dotnet_webapp on nginx via symbolic link
+    file:
+      state: link
+      src: /etc/nginx/sites-available/dotnet_webapp
+      dest: /etc/nginx/sites-enabled/dotnet_webapp
+    notify:
+      - Restart nginx      
+
   - name: Delete default nginx config
     file:
       state: absent
-      path: /etc/nginx/sites-available/default
+      path: /etc/nginx/sites-enabled/default
     notify:
       - Restart nginx
