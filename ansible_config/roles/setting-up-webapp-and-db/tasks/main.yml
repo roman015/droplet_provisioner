@@ -60,3 +60,9 @@
     notify:
       - Restart nginx
 
+  - name: Delete default nginx config
+    file:
+      state: absent
+      path: /etc/nginx/sites-available/default
+    notify:
+      - Restart nginx
