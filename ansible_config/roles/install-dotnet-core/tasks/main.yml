@@ -5,7 +5,7 @@
   ##############################################################################
 
 
-  # Following 3 steps are to install packages-microsoft-prod if it is not 
+  # Following 4 steps are to install packages-microsoft-prod if it is not 
   # present; 
   # ref: https://chaosmail.github.io/programming/2015/03/04/install-deb-packages-in-ansible/
   - name: Check if packages-microsoft-prod is installed
@@ -14,14 +14,19 @@
     failed_when: packages_microsoft_prod_check_deb.rc > 1
     changed_when: packages_microsoft_prod_check_deb.rc == 1
 
+  - name: Create Downloads directory
+    file:
+      path: /home/Downloads
+      state: directory
+
   - name: Download packages-microsoft-prod
     get_url: 
       url="https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb"
-      dest="/home/{{ ansible_env.USER }}/Downloads/packages-microsoft-prod.deb"
+      dest="/home/Downloads/packages-microsoft-prod.deb"
     when: packages_microsoft_prod_check_deb.rc == 1
 
   - name: Install packages-microsoft-prod
-    apt: deb="/home/{{ ansible_env.USER }}/Downloads/packages-microsoft-prod.deb"
+    apt: deb="/home/Downloads/packages-microsoft-prod.deb"
     when: packages_microsoft_prod_check_deb.rc == 1
 
   # ref: https://github.com/ansible/ansible/issues/48714#issuecomment-441911493
