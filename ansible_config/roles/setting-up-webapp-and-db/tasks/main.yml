@@ -9,8 +9,6 @@
   #     mode: u=rwx,g=rwx,o=rx
 
   - name: Create symlink to webapp source folder
-    become: yes
-    become_user: "{{ webapp_user }}"
     file:
       state: link
       src: /home/{{ webapp_user }}/droplet_provisioner/dotNetWebApp
