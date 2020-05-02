@@ -19,4 +19,4 @@
 
   - name: Activate firewall
     ufw:
-      state: enabled
+      state: disabled
