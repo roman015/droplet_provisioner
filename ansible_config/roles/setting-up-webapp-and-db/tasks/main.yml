@@ -43,7 +43,8 @@
     args:
       chdir: /var/www/movie-app
     notify:
-      - Restart dotNetWebApp  
+      - Restart dotNetWebApp
+      - Restart nginx
 
   - name: install dotNetWebApp systemd unit file
     template: 
@@ -51,3 +52,11 @@
       dest: /etc/systemd/system/webapp.service
     notify:
       - Restart dotNetWebApp
+
+  - name: install nginx configuration file
+    template: 
+      src: dotnet_webapp.j2 
+      dest: /etc/nginx/sites-available/dotnet_webapp
+    notify:
+      - Restart nginx
+
