@@ -29,3 +29,4 @@
       - remote-connection
       - install-dotnet-core
       - create-mysql-user-and-db
+      - create-webapp-user
