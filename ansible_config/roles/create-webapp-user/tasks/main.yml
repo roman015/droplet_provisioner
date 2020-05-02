@@ -10,14 +10,14 @@
 
   - name: Delete old version if present
     become: yes
-    become_user: {{ webapp_user }}
+    become_user: "{{ webapp_user }}"
     file:
       path: /home/{{ webapp_user }}/droplet_provisioner
       state: absent
 
   - name: Clone source code to remote system
     become: yes
-    become_user: {{ webapp_user }}
+    become_user: "{{ webapp_user }}"
     git:
       repo: https://github.com/abrahamvarricatt/droplet_provisioner.git
       dest: /home/{{ webapp_user }}/droplet_provisioner
