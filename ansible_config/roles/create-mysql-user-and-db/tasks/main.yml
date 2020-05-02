@@ -1,0 +1,53 @@
+---
+# Instructions on how to install MySQL were taken from,
+# ref: https://stackoverflow.com/a/26598887/198660
+
+  - name: Install MySQL
+    apt: 
+      name: "{{ item }}" 
+      state: present
+    with_items:
+    - python-mysqldb
+    - mysql-server
+
+  - name: Start the MySQL service
+    service: 
+      name: mysql 
+      state: started
+      enabled: true
+
+  - name: update mysql root password for all root accounts
+    mysql_user: 
+      name: root 
+      host: "{{ item }}" 
+      password: "{{ mysql_root_password }}"
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      check_implicit_admin: yes
+      priv: "*.*:ALL,GRANT"
+    with_items:
+      - "{{ ansible_hostname }}"
+      - 127.0.0.1
+      - ::1
+      - localhost
+
+  - name: Delete old DB instances
+    mysql_db:
+      name: "{{ mysql_db_name }}" 
+      state: absent
+    notify:
+     - Restart MySQL
+
+  - name: Create new DB instance
+    mysql_db:
+      name: "{{ mysql_db_name }}" 
+      state: present
+    notify:
+     - Restart MySQL
+
+  - name: Create new user with privileges to all databases
+    mysql_user:
+      name: "{{ mysql_user }}"
+      password: "{{ mysql_user_password }}"
+      priv: '*.*:ALL'
+      state: present

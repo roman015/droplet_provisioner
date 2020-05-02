@@ -1,0 +1,7 @@
+---
+
+# MySQL
+mysql_root_password: pass123
+mysql_db_name: MovieAppDb
+mysql_user: movie-admin
+mysql_user_password: temp123

@@ -22,6 +22,10 @@
 # Defining roles for our ansible script
   - hosts: remote_droplet
 
+    vars_files:
+      - group_vars/all.yml
+
     roles:
       - remote-connection
       - install-dotnet-core
+      - create-mysql-user-and-db
