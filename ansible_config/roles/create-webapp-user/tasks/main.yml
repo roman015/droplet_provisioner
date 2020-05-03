@@ -3,6 +3,7 @@
   - name: Create user to run webapp
     user:
       name: "{{ webapp_user }}"
+      group: "{{ webapp_user }}"
       password: "{{ webapp_user_password }}"
       shell: /bin/bash
       groups:
