@@ -4,17 +4,10 @@
     user:
       name: "{{ webapp_user }}"
       password: "{{ webapp_user_password }}"
+      shell: /bin/bash
       groups:
         - sudo
-        - root
       state: present
-
-  - name: Recursively grant group access to /root folder for dotNet tool access
-    file:
-      path: /root
-      state: directory
-      recurse: no
-      mode: g+rx
 
   - name: Delete old version if present
     become: yes
