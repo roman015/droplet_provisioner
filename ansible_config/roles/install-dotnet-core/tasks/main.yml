@@ -54,3 +54,6 @@
     with_items:
       - 'dotnet-sdk-3.1'
 
+  # https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet#ef-core-3x
+  - name: Install Entity Framework globally
+    shell: dotnet tool install --global dotnet-ef
