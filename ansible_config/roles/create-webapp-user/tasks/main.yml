@@ -9,6 +9,13 @@
         - root
       state: present
 
+  - name: Recursively grant group access to /root folder for dotNet tool access
+    file:
+      path: /root
+      state: directory
+      recurse: no
+      mode: g+rx
+
   - name: Delete old version if present
     become: yes
     become_user: "{{ webapp_user }}"
