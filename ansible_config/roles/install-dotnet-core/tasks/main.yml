@@ -52,6 +52,7 @@
       name: "{{ item }}"
       state: present
     with_items:
+      - 'dotnet-sdk-2.2'
       - 'dotnet-sdk-3.1'
 
   - name: debug - get PATH
