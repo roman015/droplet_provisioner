@@ -26,6 +26,6 @@
     become: yes
     become_user: "{{ webapp_user }}"
     git:
-      repo: https://github.com/abrahamvarricatt/droplet_provisioner.git
+      repo: https://github.com/roman015/droplet_provisioner.git
       dest: /home/{{ webapp_user }}/droplet_provisioner
       version: master
