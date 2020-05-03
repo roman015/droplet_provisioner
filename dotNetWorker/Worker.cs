@@ -21,7 +21,10 @@ namespace dotNetWorker
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                _logger.LogInformation("Information - Worker running at: {time}", DateTimeOffset.Now);
+                _logger.LogWarning("Warning - Worker running at: {time}", DateTimeOffset.Now);
+                _logger.LogError("Error - Worker running at: {time}", DateTimeOffset.Now);
+                _logger.LogCritical("Critical - Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
             }
         }

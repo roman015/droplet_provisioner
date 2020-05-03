@@ -33,3 +33,4 @@
       - install-nginx
       - setting-up-webapp-and-db
       - configure-systemd-journal-logging
+      - setting-up-worker

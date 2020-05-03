@@ -1,0 +1,15 @@
+---
+
+  - name: Build worker project
+    become: yes
+    become_user: "{{ webapp_user }}"
+    shell: dotnet build
+    args:
+      chdir: /home/{{ webapp_user }}/droplet_provisioner/dotNetWorker
+
+  - name: Publish dotNet worker project
+    become: yes
+    become_user: "{{ webapp_user }}"
+    shell: dotnet publish
+    args:
+      chdir: /home/{{ webapp_user }}/droplet_provisioner/dotNetWorker

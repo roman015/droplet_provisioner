@@ -1,13 +1,5 @@
 ---
 
-  # - name: Create /var/www directory
-  #   file:
-  #     path: /var/www
-  #     state: directory
-  #     owner: "{{ webapp_user }}"
-  #     group: "{{ webapp_user }}"
-  #     mode: u=rwx,g=rwx,o=rx
-
   - name: Create symlink to webapp source folder
     file:
       state: link
