@@ -2,6 +2,21 @@
 
 # droplet_provisioner
 
+What does this project do?
+
+It consists of 3 sub-projects,
+
+* ansible deployment scripts
+* a dotNet webapp (connected to a MySQL database)
+* a dotNet worker
+
+When an update is made to this repository (for example, to update one of the 
+dotNet projects), circleci will run the ansible scripts to deploy both 
+applications to a single digital ocean droplet. 
+
+
+
+
 
 # Creating SSH key pairs
 
@@ -32,3 +47,11 @@ To connect to the remote host manually you can run,
 ```
 $ ssh -i id_rsa root@159.65.244.208
 ```
+
+
+# To confirm worker is ... working;
+
+```
+$ journalctl -u worker.service -f
+```
+
