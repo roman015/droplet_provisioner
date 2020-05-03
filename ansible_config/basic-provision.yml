@@ -32,3 +32,4 @@
       - create-webapp-user
       - install-nginx
       - setting-up-webapp-and-db
+      - configure-systemd-journal-logging
