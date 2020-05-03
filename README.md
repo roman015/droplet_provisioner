@@ -23,12 +23,12 @@ You can now create a new droplet (I like to enable monitoring) with the SSH key.
 It should be under 'Authentication'. The web interface should say what the IP
 of the droplet will be. 
 
-DROPLET_IP = 167.99.127.218
+DROPLET_IP = 167.99.59.215
 
 # Manual connection
 
 To connect to the remote host manually you can run,
 
 ```
-$ ssh -i id_rsa root@167.99.127.218
+$ ssh -i id_rsa root@167.99.59.215
 ```

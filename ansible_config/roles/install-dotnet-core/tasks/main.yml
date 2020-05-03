@@ -55,7 +55,7 @@
       - 'dotnet-sdk-3.1'
 
   # https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet#ef-core-3x
-  - name: Install Entity Framework globally
+  - name: Install Entity Framework globally as "{{ webapp_user }}" 
     become: yes
     become_user: "{{ webapp_user }}"  
     shell: dotnet tool install --global dotnet-ef --version 3.1.3
