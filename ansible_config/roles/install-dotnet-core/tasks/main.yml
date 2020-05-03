@@ -54,8 +54,21 @@
     with_items:
       - 'dotnet-sdk-3.1'
 
+  - name: debug - get PATH
+    become: yes
+    become_user: "{{ webapp_user }}"
+    shell: echo $PATH
+    register: shell_result
+
+  - name: debug - print PATH
+    debug:
+      var: shell_result.stdout_lines      
+
+
   # https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet#ef-core-3x
   - name: Install Entity Framework globally
+    become: yes
+    become_user: "{{ webapp_user }}"
     shell: dotnet tool update --global dotnet-ef --version 3.1.3
   # NOTE: The original command was `dotnet tool install ...` , but running this
   #       a second time returns an error. The update command apparently installs 

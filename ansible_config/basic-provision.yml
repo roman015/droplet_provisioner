@@ -27,9 +27,9 @@
 
     roles:
       - remote-connection
-      - install-dotnet-core
-      - create-mysql-user-and-db
       - create-webapp-user
+      - install-dotnet-core
+      - create-mysql-user-and-db      
       - install-nginx
       - setting-up-webapp-and-db
       - configure-systemd-journal-logging
