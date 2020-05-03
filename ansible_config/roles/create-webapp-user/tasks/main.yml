@@ -6,6 +6,7 @@
       password: "{{ webapp_user_password }}"
       groups:
         - sudo
+        - root
       state: present
 
   - name: Delete old version if present
